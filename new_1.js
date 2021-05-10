@@ -15,3 +15,37 @@ function divideBy2(input) {
 
 console.log(multiplyBy2(6));
 console.log(divideBy2(6));
+
+// Arrow function
+let showError = function(){
+  console.log('error');
+}
+
+function showError1() {
+  console.log('error1');
+}
+
+showError();
+showError1();
+
+let showError2 = () => {
+  console.log('error2');
+}
+showError2();
+
+const sayHello = (name) => {
+  const msg = `Hello, ${name}`;
+  console.log(msg);
+};
+
+sayHello('Son');
+
+const add = function (num1, num2) {
+  const result = num1 + num2;
+  return result;
+};
+
+const add2 =  (num1, num2) => num1 + num2;
+
+console.log(add(2,3));
+console.log(add2(2,3));
