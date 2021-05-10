@@ -49,3 +49,62 @@ const add2 =  (num1, num2) => num1 + num2;
 
 console.log(add(2,3));
 console.log(add2(2,3));
+
+
+//object
+
+const superman = {
+  name : 'clark',
+  age : 30,
+}
+
+superman.hairColor = 'blue';
+superman['hobby'] = 'baseball';
+delete superman.age;
+console.log(superman)
+
+function makeObject(name, age){
+  return {
+    name,
+    age,
+    hobby : 'football',
+  }
+}
+
+const Mike = makeObject('Mike', 30);
+console.log(Mike);
+
+
+//  객체 in
+console.log('age' in Mike);
+console.log('birthday' in Mike);
+
+function isAdult(user) {
+  if(!('age' in user) || user.age < 20) {
+    return false;
+  } 
+  return true;
+}
+
+const Mike = {
+  name : 'Mike',
+  age:30,
+}
+
+const Jane = {
+  name: "Jane"
+};
+
+console.log(isAdult(Jane))
+
+//객체 for ... in
+
+const Mike = {
+  name: "Mike",
+  age: 30,
+  hobby: 'soccer'
+};
+
+for(x in Mike){
+  console.log(Mike[x]) 
+}
