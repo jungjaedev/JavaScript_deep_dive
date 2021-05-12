@@ -163,6 +163,7 @@ function isPythagorean(side1, side2, side3) {
   return false;
 }
 
+//ex15
 //   // e1 e2 => boolean값
   // 0 0 이면 false '||'
   // 0 1 , 1 0, 1 1,이면 true
@@ -171,3 +172,33 @@ function isPythagorean(side1, side2, side3) {
   } else {
     return true;
   }
+
+  // ex16
+  function addOneSecond(hour, minute, second) {
+    if (second === 59){
+      second = 0;
+      minute = minute + 1;
+    } else {
+      second += 1;
+    };
+    if (minute === 60) {
+      minute = 0;
+      hour++;
+    };
+    if (hour == 24){
+      hour = 0;
+    };
+    return `1초 뒤에 ${hour}시 ${minute}분 ${second}초 입니다`
+  }
+  
+
+  // 조건문 ex17
+  function isFalsy(anything) {
+    // TODO: 여기에 코드를 작성합니다.
+    if (anything == !false){
+      return false;
+    } else {
+      return true;
+    }
+  }
+   
