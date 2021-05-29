@@ -1,0 +1,19 @@
+#outer {
+  display: flex;
+  border: 1px dotted red;
+  padding: 10px;
+}
+
+.box {
+  border: 1px solid green;
+  padding: 10px;
+}
+/* grow를 0으로 설정해줘야 100px 이상으로 늘어나지 않습니다. */
+.left {
+  flex: 0 1 100px;
+}
+
+/* 우측 박스는 grow를 1로 설정해 나머지 공간을 채워줍시다 */
+.right {
+  flex: 1 1 auto;
+}
