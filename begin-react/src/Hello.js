@@ -1,7 +1,15 @@
 import React from 'react';
 
-const Hello = () => {
-  return <div>안녕하세요</div>;
+const Hello = ({ color, name, isSpecial }) => {
+  return (
+    <div style={{ color }}>
+      {isSpecial && <b>*</b>}
+      안녕하세요 {name}
+    </div>
+  );
 };
 
+Hello.defaultProps = {
+  name: 'emptyName',
+};
 export default Hello;
