@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import Movie from './components/Movie';
-import './App.css';
-class App extends React.Component {
+import Movie from '../components/Movie';
+import './Home.css';
+class Home extends React.Component {
   state = {
     isLoading: true,
     movies: [],
@@ -47,4 +47,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Home;
