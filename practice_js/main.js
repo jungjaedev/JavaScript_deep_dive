@@ -276,3 +276,36 @@ function createMatrix(edges) {
   }
   return result;
 }
+
+function solution(s){
+  var answer = true;
+  let cnt_p=0;
+  let cnt_y =0;
+  
+  let str = s.toLowerCase();
+  for (let i = 0; i < str.length;i++){
+      if(str[i] === 'p') cnt_p++;
+      else if(str[i] === 'y') cnt_y++;
+  }
+  
+  if(cnt_p !== cnt_y) answer = false;
+ 
+
+  return answer;
+}
+
+function solution(n) {
+  var answer = [];
+  let str = n.toString()
+  for (let i = str.length-1; i >= 0;i--){
+      answer.push(Number(str[i]))
+  }
+  return answer;
+}
+
+function solution(n) {
+  var answer = 0;
+  let str = n.toString().split('').sort((a,b)=>b-a).join('')
+  answer = parseInt(str)
+  return answer;
+}
