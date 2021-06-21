@@ -328,3 +328,20 @@ const bubbleSort = function (arr) {
   }
   return arr
 };
+
+function solution(s){
+  var answer = true;
+  let cnt_p=0;
+  let cnt_y =0;
+  
+  let str = s.toLowerCase();
+  for (let i = 0; i < str.length;i++){
+      if(str[i] === 'p') cnt_p++;
+      else if(str[i] === 'y') cnt_y++;
+  }
+  
+  if(cnt_p !== cnt_y) answer = false;
+ 
+
+  return answer;
+}
