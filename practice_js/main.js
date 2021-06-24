@@ -609,3 +609,25 @@ Promise.all([f1(), f2(), f3()]) //
 //     .finally(() => {
 //         console.log("끝");
 //     });
+
+// test
+function solution(arr1, arr2) {
+  var answer = [[]];
+  for(let i = 0; i < arr1.length; i++){
+      answer[i] = [];
+      for(let j = 0; j < arr1[i].length; j++){
+         answer[i].push(arr1[i][j] + arr2[i][j])
+      }
+  }
+  return answer;
+}
+
+//별찍기
+process.stdin.setEncoding('utf8');
+process.stdin.on('data', data => {
+    const n = data.split(" ");
+    const a = Number(n[0]), b = Number(n[1]);
+    for(let i = 0; i < b; i++) {
+        console.log("*".repeat(a)); 
+    }
+});
