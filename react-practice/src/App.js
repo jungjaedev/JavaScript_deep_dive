@@ -8,6 +8,8 @@ function App() {
   let [modal, modal변경] = useState(false);
   let [누른제목, 누른제목변경] = useState(0);
 
+  let [입력값, 입력값변경] = useState('');
+
   let posts = '강남 맛집';
 
   function 제목바꾸기() {
@@ -24,7 +26,7 @@ function App() {
 
       {글제목.map((글, i) => {
         return (
-          <div className="list">
+          <div className="list" key={i}>
             <h3
               onClick={() => {
                 누른제목변경(i);
@@ -45,6 +47,18 @@ function App() {
           </div>
         );
       })}
+
+      {/* {입력값}
+      <input
+        onChange={e => {
+          입력값변경(e.target.value);
+        }}
+      /> */}
+
+      <div className="publish">
+        <input />
+        <button>저장</button>
+      </div>
 
       <button
         onClick={() => {
