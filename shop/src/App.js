@@ -3,11 +3,14 @@ import './App.css';
 import { Navbar, Container, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
 import Data from './data';
 import Detail from './Detail';
+import axios from 'axios';
 
 import { Link, Route, Switch } from 'react-router-dom';
+import { result } from 'lodash';
 
 function App() {
   let [shoes, setShoes] = useState(Data);
+  let [재고, set재고] = useState([10, 11, 12]);
 
   return (
     <div className="App">
@@ -17,11 +20,11 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link>
-                <Link to="/">Home</Link>
+              <Nav.Link as={Link} to="/">
+                Home
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/detail">Detail</Link>
+              <Nav.Link as={Link} to="/detail">
+                Detail
               </Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -52,15 +55,31 @@ function App() {
                 return <Card shoes={shoes[i]} key={i} />;
               })}
             </div>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                axios
+                  .get('https://codingapple1.github.io/shop/data2.json')
+                  .then(res => {
+                    setShoes([...shoes, ...res.data]);
+                  })
+                  .catch(() => {
+                    console.log('fail');
+                  });
+              }}
+            >
+              더보기
+            </button>
           </div>
         </Route>
-        <Route path="/detail">
-          <Detail />
+
+        <Route path="/detail/:id">
+          <Detail shoes={shoes} 재고={재고} set재고={set재고} />
         </Route>
 
-        <Route path="/:id">
+        {/* <Route path="/:id">
           <div>홀라이꼼</div>
-        </Route>
+        </Route> */}
       </Switch>
     </div>
   );
