@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+/* eslink-disable */
+
+import React, { useContext, useState } from 'react';
 import './App.css';
 import { Navbar, Container, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
 import Data from './data';
@@ -7,6 +9,10 @@ import axios from 'axios';
 
 import { Link, Route, Switch } from 'react-router-dom';
 import { result } from 'lodash';
+
+import Cart from './Cart.js';
+
+export let 재고context = React.createContext();
 
 function App() {
   let [shoes, setShoes] = useState(Data);
@@ -50,11 +56,13 @@ function App() {
           </Jumbotron>
 
           <div className="container">
-            <div className="row">
-              {shoes.map((item, i) => {
-                return <Card shoes={shoes[i]} key={i} />;
-              })}
-            </div>
+            <재고context.provider value={재고}>
+              <div className="row">
+                {shoes.map((item, i) => {
+                  return <Card shoes={shoes[i]} key={i} />;
+                })}
+              </div>
+            </재고context.provider>
             <button
               className="btn btn-primary"
               onClick={() => {
@@ -86,6 +94,7 @@ function App() {
 }
 
 function Card({ shoes }) {
+  let 재고 = useContext(재고context);
   return (
     <div className="col-md-4">
       <img src={shoes.img} width="100%" />
@@ -93,8 +102,14 @@ function Card({ shoes }) {
       <p>
         {shoes.content} & {shoes.price}
       </p>
+      {재고}
     </div>
   );
+}
+
+function Test() {
+  let 재고 = useContext(재고context);
+  return <p>{재고} </p>;
 }
 
 export default App;

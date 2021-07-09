@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
+/* eslink-disable */
+
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import './Detail.scss';
+import { 재고context } from './App.js';
+import Tabs from 'react-bootstrap';
 
 let 박스 = styled.div`
   padding: 20px;
@@ -11,6 +15,8 @@ let 제목 = styled.h4`
   font-size: 25px;
   color: ${props => props.색상};
 `;
+
+let 재고 = useContext(재고context);
 
 function Detail({ shoes, 재고, set재고 }) {
   let [alert, setAlert] = useState(true);
@@ -75,6 +81,20 @@ function Detail({ shoes, 재고, set재고 }) {
           </button>
         </div>
       </div>
+
+      <Nav variant="tabs" defaultActiveKey="/home">
+        <Nav.Item>
+          <Nav.Link href="/home">Active</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">Option 2</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="disabled" disabled>
+            Disabled
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
     </div>
   );
 }
