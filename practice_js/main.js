@@ -628,6 +628,24 @@ process.stdin.on('data', data => {
     const n = data.split(" ");
     const a = Number(n[0]), b = Number(n[1]);
     for(let i = 0; i < b; i++) {
-        console.log("*".repeat(a)); 
+        console.log("*".repeat(a));
     }
 });
+
+// 정수 내림차
+function solution(n) {
+    var answer = 0;
+	    let str = n.toString().split('').sort((a,b)=>b-a).join('')
+		    answer = parseInt(str)
+			    return answer;
+				}
+
+// 자연수 뒤집어 배열로 만들기
+function solution(n) {
+    var answer = [];
+	    let str = n.toString()
+		    for (let i = str.length-1; i >= 0;i--){
+			        answer.push(Number(str[i]))
+					    }
+						    return answer;
+							}
