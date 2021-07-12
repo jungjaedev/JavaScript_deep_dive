@@ -4,21 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { BrowserRouter } from 'react-router-dom';
-
-import { Provider } from 'react-redux';
-
-let store = createStore(() => {
-  return [{ id: 0, name: 'ShOeS', quan: 2 }];
-});
-
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
