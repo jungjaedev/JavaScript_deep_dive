@@ -720,3 +720,47 @@ function newChickenRecipe(stuffArr, choiceNum) {
   // 순열의 길이 반환
   return result;
 }
+
+
+// 최대공약수
+function divideChocolateStick(M, N) {
+  let max = M;
+  let min = N;
+
+  if (M < N) {
+    [max, min] = [N, M];
+  }
+  // 최대공약수
+  function gcd(maxNum, minNum) {
+    let n = 0;
+    while (minNum !== 0) {
+      n = maxNum % minNum;
+      maxNum = minNum;
+      minNum = n;
+    }
+    return maxNum;
+  }
+  let maxNum = gcd(max, min)
+
+  let nums = [];
+  for (let i = 1; i <= Math.sqrt(maxNum); i++) {
+    if(maxNum % i === 0) {
+      nums.push(i);
+      if(i !== maxNum / i) {
+      nums.push(maxNum / i);
+      }
+    }
+  }
+  nums.sort((a,b)=>a-b)
+  let el = [];
+  let result = [];
+  for(let i = 0; i < nums.length; i++){
+    el = [];
+    el.push(nums[i])
+    el.push(M / nums[i])
+    el.push(N / nums[i])
+    result.push(el)
+  }
+  return result
+}
+
