@@ -817,3 +817,19 @@ const rockPaperScissors = function (rounds) {
 																																									  // outcomes를 반환합니다.
 																																									    return outcomes;
 																																										};
+
+
+                                                                                    
+                                                                            
+//프로그래머스 김서방찾기
+function solution(seoul) {
+  var answer = '';
+  // for (let i = 0; i <seoul.length;i++){
+  //     if(seoul[i] === 'Kim') {
+  //         answer = `김서방은 ${i}에 있다`
+  //     }
+  // }
+  let num = seoul.indexOf('Kim');
+  answer = `김서방은 ${num}에 있다`
+  return answer;
+}
