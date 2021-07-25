@@ -833,3 +833,13 @@ function solution(seoul) {
   answer = `김서방은 ${num}에 있다`
   return answer;
 }
+
+//
+function solution(n) {
+    var answer = [];
+    let str = n.toString()
+    for (let i = str.length-1; i >= 0;i--){
+        answer.push(Number(str[i]))
+    }
+    return answer;
+}
