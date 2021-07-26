@@ -843,3 +843,23 @@ function solution(n) {
     }
     return answer;
 }
+
+//조합 알고리즘
+function boringBlackjack(cards) {
+  let isPrime = (num) => {
+    for(let i = 2; i <= Math.sqrt(num); i++) {
+      if(num % i === 0) return false;
+    }
+    return true;
+  } 
+
+  let cnt = 0;
+  for(let i = 0; i < cards.length; i++) {
+    for(let j = i + 1; j < cards.length; j++) {
+      for(let k = j + 1; k < cards.length; k++) {
+        if(isPrime(cards[i] + cards[j] + cards[k])) cnt++;
+      }
+    }
+  }
+  return cnt;
+}
