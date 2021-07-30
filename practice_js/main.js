@@ -1003,3 +1003,20 @@ function barcode(len) {
   }
   return aux('');
 }
+
+// 그리디
+function partTimeJob(k) {
+  // TODO: 여기에 코드를 작성하세요.
+  // count 변수
+  let count = 0;
+  // coin 배열 필요
+  let coin = [500, 100, 50, 10, 5, 1];
+  // 큰 동전부터 하나씩 k와 나누기(coin 배열 길이만큼 반복해서 나누기)
+  for(let i = 0; i < coin.length; i++) {
+    let int = Math.floor(k / coin[i]);
+    count += int;
+    k = k % coin[i];
+  }
+  // 나눈 몫을 count에 더해주기, 나머지는 계속 나누기
+  return count;
+}
