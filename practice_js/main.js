@@ -1051,3 +1051,13 @@ function ocean(target, type) {
   // 해당 값을 리턴해 준다
   return bag[target];
 }
+
+// 프로그래머스 번호가리기문제
+function solution(phone_number) {
+  var answer = '';
+  for (let i = 0; i < phone_number.length;i++) {
+      if(i > phone_number.length-5) answer += phone_number[i]
+      else answer += "*"
+  }
+  return answer;
+}
