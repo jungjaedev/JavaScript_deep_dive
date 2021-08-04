@@ -1088,3 +1088,20 @@ function solution(a, b) {
    }
   return answer;
 }
+
+function computeWhenDouble(interestRate) {
+  let rate = 1 + interestRate / 100
+  let pc = 1
+  let year = 1;
+
+  for(let i = 0;;i++){
+    pc = pc * rate;
+    if(pc >= 2){
+      break;
+    }
+    year++;
+  }
+
+  return year;
+
+}
