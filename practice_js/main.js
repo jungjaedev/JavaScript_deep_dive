@@ -1152,3 +1152,12 @@ function orderOfPresentation(N, K) {
 }
 
 console.log(orderOfPresentation(3, [2, 3, 1]));
+
+
+// 프로그래머스 - 내림차순
+function solution(n) {
+  var answer = 0;
+  let str = n.toString().split('').sort((a,b)=>b-a).join('')
+  answer = parseInt(str)
+  return answer;
+}
