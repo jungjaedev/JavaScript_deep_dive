@@ -1161,3 +1161,33 @@ function solution(n) {
   answer = parseInt(str)
   return answer;
 }
+
+//[Greedy] 짐 나르기
+function movingStuff(stuff, limit) {
+  // 카운트 변수 선언
+
+  // 오름차순 정렬 [ 50, 50, 70, 80]
+
+  // 반복문 => if ( 제일 작은 수 + 제일 큰 수 > limit ) {
+              //cnt++
+              //[ 50, 50, 70] //
+  //}
+  //     => else {
+  //      cnt++
+  //      배열에서 제일 작은수와 큰수를 slice
+  //}
+  // 리턴 cnt;
+  let cnt = 0;
+  let arr = stuff.sort((a,b)=> a-b)
+
+  while (arr.length > 0) {
+    if(arr[0] + arr[arr.length-1] > limit) {
+      arr = arr.slice(0, arr.length-1);
+      cnt++;
+    } else {
+      arr = arr.slice(1, arr.length-1);
+      cnt++;
+    }
+  }
+  return cnt;
+}
