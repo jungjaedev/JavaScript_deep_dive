@@ -1244,3 +1244,15 @@ let fibonacci = function (n) {
   };
   return aux(n);
 };
+
+function firstCharacter(str) {
+  if (str.length === 0) {
+    return "";
+  }
+  let arr = str.split(' ');
+  let result = "";
+  for (let i = 0; i < arr.length; i++) {
+    result = result + arr[i][0];
+  }
+  return result;
+}
