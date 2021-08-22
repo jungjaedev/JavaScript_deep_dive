@@ -1271,3 +1271,29 @@ function firstCharacter(str) {
   }
   return result;
 }
+
+// DFS [바코드]
+function barcode(len) {
+  const isValid = (str) => {
+      const reversed = str.split('').reverse().join('');
+      const halfLen = Math.floor(str.length / 2);
+      for (let i = 1; i <= halfLen; i++) {
+          if (reversed.slice(0, i) === reversed.slice(i, i + i)) {
+              return false;
+          }
+      }
+      return true;
+  }
+  const chr = '123';
+  const aux = (str) => {
+      if (str.length === len) return str;
+      for (let i = 0; i < chr.length; i++) {
+          if(isValid(str + chr[i])) {
+              const founded = aux(str + chr[i]);
+              if (founded !== null) return founded;
+          }  
+      }
+      return null
+  }
+  return aux('');
+}
