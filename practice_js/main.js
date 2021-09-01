@@ -29,3 +29,34 @@ function boardGame(board, operation) {
   }
   return answer;
 }
+
+/** */
+
+function boringBlackjack(cards) {
+  let isPrime = num => {
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  };
+
+  let cnt = 0;
+  let answer = [];
+  let tmp = Array.from({ length: 3 }, () => 0);
+  function DFS(L, s) {
+    if (L === 3) {
+      let sum = tmp[0] + tmp[1] + tmp[2];
+      if (isPrime(sum)) {
+        cnt++;
+        answer.push(tmp.slice());
+      }
+    } else {
+      for (let i = s; i < cards.length; i++) {
+        tmp[L] = cards[i];
+        DFS(L + 1, i + 1);
+      }
+    }
+  }
+  DFS(0, 0);
+  return cnt;
+}
