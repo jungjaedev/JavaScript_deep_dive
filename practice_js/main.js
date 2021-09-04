@@ -126,3 +126,17 @@ function divideChocolateStick(M, N) {
   result.sort((a, b) => a[0] - b[0]);
   return result;
 }
+
+/**멱집합 풀이 */
+function missHouseMeal(sideDishes) {
+  sideDishes.sort();
+  const res = [];
+  const dfs = (start = 0, arr = []) => {
+    res.push(arr);
+    for (let i = start; i < sideDishes.length; i++) {
+      dfs(i + 1, [...arr, sideDishes[i]]);
+    }
+  };
+  dfs();
+  return res;
+}
