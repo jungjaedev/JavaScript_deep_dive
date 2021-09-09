@@ -184,3 +184,42 @@ const powerSet = function (str) {
   pickOrNot(0, '');
   return subSets.sort();
 };
+
+// graph 인접행렬 생성
+function createMatrix(edges) {
+  // TODO: 여기에 코드를 작성합니다.
+  let result = [];
+  let maxNumber = 0;
+
+  for (let i = 0; i < edges.length; i++) {
+    if (edges[i][0] > maxNumber) {
+      maxNumber = edges[i][0];
+    }
+  }
+  for (let i = 0; i < edges.length; i++) {
+    if (edges[i][1] > maxNumber) {
+      maxNumber = edges[i][1];
+    }
+  }
+
+  // for(let i = 0; i < maxNumber+1; i++) {
+  //   result.push(new Array(maxNumber + 1).fill(0));
+  // }
+  result = Array.from(Array(maxNumber + 1), () => Array(maxNumber + 1).fill(0));
+
+  // maxNumber = Math.max(...edges.flat());
+
+  // result = new Array(maxNumber+1).fill(0).map(e => new Array(maxNumber+1).fill(0));
+
+  for (let i = 0; i < edges.length; i++) {
+    if (edges[i][2] === 'directed') {
+      result[edges[i][0]][edges[i][1]] = 1;
+      console.log(edges[i][0], edges[i][1]);
+    } else if (edges[i][2] === 'undirected') {
+      result[edges[i][0]][edges[i][1]] = 1;
+      result[edges[i][1]][edges[i][0]] = 1;
+      console.log(edges[i][0], edges[i][1]);
+    }
+  }
+  return result;
+}
