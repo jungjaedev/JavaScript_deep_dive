@@ -292,3 +292,18 @@ const insertionSort = function (arr, transform = item => item) {
 
   return sorted;
 };
+
+const LPS = function (str) {
+  let resultStr = '';
+  
+  for (let i = 0; i <= str.length / 2; i += 1) {
+    let prefix = str.slice(0, i);
+    let suffix = str.slice(str.length - i);
+    
+    if (prefix === suffix) {
+      resultStr = prefix;
+    }
+  };
+  
+  return resultStr.length;
+};
