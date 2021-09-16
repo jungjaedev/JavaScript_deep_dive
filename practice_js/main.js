@@ -295,15 +295,42 @@ const insertionSort = function (arr, transform = item => item) {
 
 const LPS = function (str) {
   let resultStr = '';
-  
+
   for (let i = 0; i <= str.length / 2; i += 1) {
     let prefix = str.slice(0, i);
     let suffix = str.slice(str.length - i);
-    
+
     if (prefix === suffix) {
       resultStr = prefix;
     }
-  };
-  
+  }
+
   return resultStr.length;
 };
+
+//toy 1번
+function orderOfPresentation(N, K) {
+  const used = [];
+  let res = 0;
+
+  //used에 N길이만큼 0을 push
+  for (let i = 0; i < N; i++) used.push(0);
+
+  //팩토리얼
+  const fac = n => {
+    let f = 1;
+    for (let i = n; i > 0; i--) f *= i;
+    return f;
+  };
+
+  for (let j = 0; j < K.length; j++) {
+    const n = K[j];
+    used[n - 1] = 1;
+    const p = used.slice(0, n);
+    const len = p.filter(i => i === 0).length;
+    res += len * fac(N - j - 1);
+  }
+  return res;
+}
+
+console.log(orderOfPresentation(3, [2, 3, 1]));
