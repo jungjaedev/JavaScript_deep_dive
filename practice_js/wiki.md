@@ -149,4 +149,68 @@ db스키마 변경사항 기록, 관리하기 위한 Migration Tool이다.
 ...
 💡 What is Database Migration?
 
-데이터베이스를 하나의 플랫폼에서 다른 플랫폼으로 옮기는 것
+## 데이터베이스를 하나의 플랫폼에서 다른 플랫폼으로 옮기는 것
+
+### 📒 How to use docker on CLI
+
+- #### 🔍 이미지 가져오기 -> docker image pull NAME[:TAG]
+
+  ```
+  docker image pull docker/whalesay:latest
+  ```
+
+  => `:latest`를 통해 `docker/whalesay`의 최신 이미지를 받아옴
+
+---
+
+- #### 🔍 이미지 리스트를 출력 -> docker image ls
+
+---
+
+- #### 🔍 컨테이너 실행 -> docker container run IMAGE [COMMAND] [ARG…]
+
+  ```
+  docker container run —name whalesay docker/whalesay:latest cowsay boo
+  ```
+
+  `run` : 컨테이너 실행
+  `--name` : 컨테이너의 이름 할당
+  ` cowsay` : 컨테이너 실행 시 cowsay 명령어를 호출(node를 호출하듯 이용)
+  `boo` : cowsay에 넘겨질 파라미터
+
+---
+
+- #### 🔍 모든 컨테이너 리스트 출력 -> docker container ps -a
+
+---
+
+- #### 🔍 컨테이너 삭제 -> docker container rm CONTAINER_NAME
+
+---
+
+- #### 🔍 이미지 삭제 -> docker image rm IMAGE_NAME
+
+---
+
+- #### 🔍 이미지를 받아오고, 컨테이너로 실행하고, 컨테이너와 관련된 리소스를 삭제하는 작업을 한번에
+
+  ```
+  docker container run --name CONTAINER_NAME --rm docker/whalesay cowsay boo
+  ```
+
+  `-rm` 옵션을 통해 1회성으로 실행할 수 있음.
+
+---
+
+- ## 💡 도커를 이용해 간단하게 파이썬 개발환경 구축
+
+![](https://images.velog.io/images/jungjaedev/post/931babb7-8b2a-4ef0-9ad9-3b47dfd4a510/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-18%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%207.32.27.png)
+`docker run -it python`
+
+     =>  `-it` 옵션을 통해 컨테이너에 명령어를 입력할 수 있게 해줌
+
+![](https://images.velog.io/images/jungjaedev/post/da68114e-2d14-4b30-b683-280a144f1830/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-18%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%207.34.47.png)
+
+`exit()` : 파이썬 콘솔 종료
+`docker start CONTAINER_ID` : 컨테이너 시작
+`docker exec -it CONTAINER_ID bash` : 컨테이너 bash쉘로 접속
