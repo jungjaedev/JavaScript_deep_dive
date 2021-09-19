@@ -214,3 +214,97 @@ db스키마 변경사항 기록, 관리하기 위한 Migration Tool이다.
 `exit()` : 파이썬 콘솔 종료
 `docker start CONTAINER_ID` : 컨테이너 시작
 `docker exec -it CONTAINER_ID bash` : 컨테이너 bash쉘로 접속
+
+---
+
+> MySQL은 세계에서 가장 많이 쓰이는 오픈 소스의 관계형 데이터베이스 관리 시스템이다.
+
+### 데이터베이스 생성
+
+```
+mysql> CREATE DATABASE [database_name];
+```
+
+### 데이터베이스 사용
+
+```mysql
+mysql> USE [database_name];
+Database changed
+```
+
+### 데이터베이스 삭제
+
+```
+mysql> DROP DATABASE [database_name];
+```
+
+---
+
+### 테이블 생성
+
+```
+mysql> CREATE TABLE [Table_name] (
+	[column1 name] [datatype],
+    [column2 name] [datatype],
+    [column3 name] [datatype]
+    );
+```
+
+### 테이블 삭제
+
+```
+mysql> DROP TABLE [table_name];
+```
+
+---
+
+### 테이블에 Column 추가
+
+```
+mysql> ALTER TABLE [table_name] ADD [column name][datatype];
+```
+
+### Column의 타입 변경
+
+```
+mysql> ALTER TABLE [table_name] MODIFY COLUMN [column_name][datatype];
+```
+
+### Column 삭제
+
+```
+mysql> ALTER TABLE [table_name] DROP [column_name];
+```
+
+---
+
+### 테이블에 행 추가
+
+```
+mysql> INSERT INTO [table_name] VALUES (value1, value2...);
+```
+
+### condition을 통해서 정보 확인
+
+```
+mysql> SELECT [what_to_select]
+       FROM [which_table]
+       WHERE [conditions_to_satisfy];
+```
+
+### 내용 수정
+
+```
+mysql> UPDATE [table_name] SET [column_name]=[value] WHERE [condition];
+```
+
+---
+
+### Join syntax
+
+```
+mysql> SELECT [what_to_select]
+       FROM [standard_table]
+       JOIN [Joined_table]
+       ON [standard_table.key=joined_table.key]
+```
