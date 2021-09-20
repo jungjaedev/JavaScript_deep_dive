@@ -308,3 +308,48 @@ mysql> SELECT [what_to_select]
        JOIN [Joined_table]
        ON [standard_table.key=joined_table.key]
 ```
+
+---
+
+## 📒 URI(Uniform Resource Identifier)
+
+### 💾 URI를 구성하는 파트
+
+`http://blog.example.com/entries/1`
+
+> URI Scheme : http
+> 호스트명 : blog.example.com
+> path : /entries/1
+
+#### URI Scheme
+
+- URI는 URI Scheme로 시작된다. 위 예에서는 리소스를 HTTP로 접근할 수 있다는 것을 나타낸다. (file://, http://, https:// 등이 올 수 있음)
+
+#### 호스트
+
+- DNS(Domain Name System)=> 이름을 통해 알 수 있듯이 도메인 명이나 IP Address가 온다.
+
+#### path(경로)
+
+- 호스트안에서 하나의 리소스를 가르킨다.
+
+---
+
+### 💾 URN, URL
+
+> URI는 URL과 URN을 포함하는 상위개념
+
+![](https://images.velog.io/images/jungjaedev/post/4e7b06d2-de9d-415a-b1ef-0ecd4c3d7702/asdfae.png)
+
+#### URL(Uniform Resource Locator)
+
+- 이름에서 알다시피 URL은 Resource가 어디에 있는지 위치를 알려준다.
+
+#### URN(Uniform Resource Name)
+
+- Resource의 이름을 나타내고 자원이 '무엇'인지 말해준다.
+
+> 출처
+> https://nsinc.tistory.com/192
+> https://danielmiessler.com/study/difference-between-uri-url/
+> https://ko.wikipedia.org/wiki/%ED%86%B5%ED%95%A9_%EC%9E%90%EC%9B%90_%EC%8B%9D%EB%B3%84%EC%9E%90
