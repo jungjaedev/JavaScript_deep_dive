@@ -353,3 +353,58 @@ mysql> SELECT [what_to_select]
 > https://nsinc.tistory.com/192
 > https://danielmiessler.com/study/difference-between-uri-url/
 > https://ko.wikipedia.org/wiki/%ED%86%B5%ED%95%A9_%EC%9E%90%EC%9B%90_%EC%8B%9D%EB%B3%84%EC%9E%90
+
+---
+Slice, Substring 두 메서드의 차이점은.
+
+> `Syntax: string.substring(start, stop);`
+
+>`Syntax: string.slice(start, stop);`
+
+
+
+### 💾 substring과 slice 메서드는 거의 동일하게 동작함.
+```javascript
+// 2번째부터 7번째 이전 문자까지 잘라내어 리턴
+console.log(str.substring(2, 8)); // "llo Ja"
+console.log(str.slice(2, 8)); // "llo Ja"
+```
+
+
+### 💾 start와 stop이 같으면 빈문자열을 리턴
+```
+console.log(str.substring(2, 2)); // ""
+console.log(str.slice(2, 2)); // ""
+```
+### 💾 두번째 인수를 생략하면 첫번째 인수로 전달한 인덱스 위치의 문자부터 마지막문자까지 부분문자열을 리턴
+```javascript
+//두번째 인수 생략
+console.log(str.substring(2)); // "llo JavaScript!"
+console.log(str.slice(2)); // "llo JavaScript!"
+```
+
+
+
+### 💾 what's difference between slice() and substring()
+```
+//substirng : 인수 0보다 작거나 NaN인 경우 인수가'0'으로 
+console.log(str.substring(-5)); "Hello JavaScript!"
+
+//slice : 인수가 음수인 경우 뒤에서부터 잘라내어 리턴
+console.log(str.slice(-5)); // "ript!"
+```
+
+**두 메서드의 차이는 인수가 음수일 때** 알 수 있음. 
+`substring`의 경우 인수가 `0보다 작거나 NaN`인 경우 '0'이 되어서 모든 문자열이 출력되는 것을 확인할 수 있음.
+`slice`는 인수가 음수인 경우 뒤에서부터 잘라내어 리턴.
+
+
+#### 💡substr vs slice,substring 
+substr()의 Parameters는 위의 두 메서드와 달리 (start, length)입니다. 즉, start부터 length만큼의 글자수를 리턴.
+>`Syntax: substr(start, length)`
+
+
+
+
+
+
