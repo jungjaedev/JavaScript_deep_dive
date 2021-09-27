@@ -358,7 +358,7 @@ const binarySearch = function (arr, target) {
   return -1
 };
 
-//거읍제곱 리턴
+//거듭제곱 리턴
 
 function power(base, exponent) {
   if (exponent === 0) return 1;
@@ -370,3 +370,24 @@ function power(base, exponent) {
   if (exponent % 2 === 1) return (base * result) % 94906249;
   else return result;
 }
+
+// tree 알고리즘
+
+let dfs = function (node) {
+  let values = [node.value];
+
+  node.children.forEach((n) => {
+    values = values.concat(dfs(n));
+  });
+
+  return values;
+};
+
+let Node = function (value) {
+  this.value = value;
+  this.children = [];
+};
+Node.prototype.addChild = function (child) {
+  this.children.push(child);
+  return child;
+};
