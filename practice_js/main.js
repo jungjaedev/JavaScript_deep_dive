@@ -346,16 +346,16 @@ let fibonacci = function (n) {
   return aux(n);
 };
 
----
+// ---
 const binarySearch = function (arr, target) {
   let left = 0;
-  let right = arr.length-1
+  let right = arr.length - 1;
   while (left <= right) {
     let middle = parseInt((right + left) / 2);
-    if(arr[middle] === target) return middle;
-    target < arr[middle] ? right = middle - 1 : left = middle + 1;
+    if (arr[middle] === target) return middle;
+    target < arr[middle] ? (right = middle - 1) : (left = middle + 1);
   }
-  return -1
+  return -1;
 };
 
 //거듭제곱 리턴
@@ -376,7 +376,7 @@ function power(base, exponent) {
 let dfs = function (node) {
   let values = [node.value];
 
-  node.children.forEach((n) => {
+  node.children.forEach(n => {
     values = values.concat(dfs(n));
   });
 
