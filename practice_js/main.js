@@ -550,3 +550,22 @@ const rotatedArraySearch = function (rotated, target) {
 
   return -1;
 };
+
+// bubble sort
+const bubbleSort = function (arr) {
+  function swap(idx1, idx2, arr) {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    let swaps = 0;
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(j, j + 1, arr);
+        swaps++;
+      }
+    }
+    if (swaps === 0) break;
+  }
+  return arr;
+};
