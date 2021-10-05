@@ -350,133 +350,125 @@ mysql> SELECT [what_to_select]
 - Resource의 이름을 나타내고 자원이 '무엇'인지 말해준다.
 
 > 출처
-> https://nsinc.tistory.com/192
-> https://danielmiessler.com/study/difference-between-uri-url/
-> https://ko.wikipedia.org/wiki/%ED%86%B5%ED%95%A9_%EC%9E%90%EC%9B%90_%EC%8B%9D%EB%B3%84%EC%9E%90
+> https://nsinc.tistory.com/192 > https://danielmiessler.com/study/difference-between-uri-url/ > https://ko.wikipedia.org/wiki/%ED%86%B5%ED%95%A9_%EC%9E%90%EC%9B%90_%EC%8B%9D%EB%B3%84%EC%9E%90
 
 ---
+
 Slice, Substring 두 메서드의 차이점은.
 
 > `Syntax: string.substring(start, stop);`
 
->`Syntax: string.slice(start, stop);`
-
-
+> `Syntax: string.slice(start, stop);`
 
 ### 💾 substring과 slice 메서드는 거의 동일하게 동작함.
+
 ```javascript
 // 2번째부터 7번째 이전 문자까지 잘라내어 리턴
 console.log(str.substring(2, 8)); // "llo Ja"
 console.log(str.slice(2, 8)); // "llo Ja"
 ```
 
-
 ### 💾 start와 stop이 같으면 빈문자열을 리턴
+
 ```
 console.log(str.substring(2, 2)); // ""
 console.log(str.slice(2, 2)); // ""
 ```
+
 ### 💾 두번째 인수를 생략하면 첫번째 인수로 전달한 인덱스 위치의 문자부터 마지막문자까지 부분문자열을 리턴
+
 ```javascript
 //두번째 인수 생략
 console.log(str.substring(2)); // "llo JavaScript!"
 console.log(str.slice(2)); // "llo JavaScript!"
 ```
 
-
-
 ### 💾 what's difference between slice() and substring()
+
 ```
-//substirng : 인수 0보다 작거나 NaN인 경우 인수가'0'으로 
+//substirng : 인수 0보다 작거나 NaN인 경우 인수가'0'으로
 console.log(str.substring(-5)); "Hello JavaScript!"
 
 //slice : 인수가 음수인 경우 뒤에서부터 잘라내어 리턴
 console.log(str.slice(-5)); // "ript!"
 ```
 
-**두 메서드의 차이는 인수가 음수일 때** 알 수 있음. 
+**두 메서드의 차이는 인수가 음수일 때** 알 수 있음.
 `substring`의 경우 인수가 `0보다 작거나 NaN`인 경우 '0'이 되어서 모든 문자열이 출력되는 것을 확인할 수 있음.
 `slice`는 인수가 음수인 경우 뒤에서부터 잘라내어 리턴.
 
+#### 💡substr vs slice,substring
 
-#### 💡substr vs slice,substring 
 substr()의 Parameters는 위의 두 메서드와 달리 (start, length)입니다. 즉, start부터 length만큼의 글자수를 리턴.
->`Syntax: substr(start, length)`
 
-
-
-
-
-
+> `Syntax: substr(start, length)`
 
 ---
 
 # 💡Async vs Defer
 
-현대의 웹사이트에서는 대부분의 `script`들이 `HTML`보다 "무겁다". 
+현대의 웹사이트에서는 대부분의 `script`들이 `HTML`보다 "무겁다".
 프로젝트가 커질수록 다운로드할 크기가 커져서 페이지가 로드되는 속도가 느려진다. 그만큼 `User`에게 늦게 보여질 것이다.
-이를 고치기위해 보통 데이터베이스나 백엔드에서 최적화 처리를 하게 된다. 하지만 이보다 더 쉽게 프론트엔드에서 페이지가 로드되는 속도를 빠르게 처리할 수 있다. 
+이를 고치기위해 보통 데이터베이스나 백엔드에서 최적화 처리를 하게 된다. 하지만 이보다 더 쉽게 프론트엔드에서 페이지가 로드되는 속도를 빠르게 처리할 수 있다.
 자바스크립트를 어떻게 로딩하느냐에 따라 프로세싱 속도가 달라질 수 있다.
+
 #### How Is HTML Parsed
-브라우져가 `HMTL`을 로드하는중에 `<script>...</script>` 태그를 만나면 
-이 스크립트가 실행이 된 후에 완료가 되면 이어서 `HTML`이 로드가 된다. 
+
+브라우져가 `HMTL`을 로드하는중에 `<script>...</script>` 태그를 만나면
+이 스크립트가 실행이 된 후에 완료가 되면 이어서 `HTML`이 로드가 된다.
+
 ```html
 <!DOCTYPE html>
 <html>
   <head>
-    <script> // `HTML parser`가 이줄에 오면 `script`가 실행이 됨 
-    		// 실행이 끝나면 다시 남은 `html`을 `parsing`함
-    </script> 
+    <script>
+      // `HTML parser`가 이줄에 오면 `script`가 실행이 됨
+      // 실행이 끝나면 다시 남은 `html`을 `parsing`함
+    </script>
   </head>
-  <body>
-  </body>
+  <body></body>
 </html>
 ```
 
-
-
 ## `script`태그의 위치에 따른 장단점
-### 💽  head에 script가 위치 
+
+### 💽 head에 script가 위치
+
 - 브라우져가 한줄씩 분석 ⇒ head에서 script태그를 만나면 html parsing하는것을 멈추고 불러온다.
-(서버에서 다운 ⇒ 실행) 실행 후에 다음 parsing으로 진행 / 만약에 스크립트 안의 파일이 매우 크고 인터넷이 느리다면 사용자가 보기힘들 것이다.
+  (서버에서 다운 ⇒ 실행) 실행 후에 다음 parsing으로 진행 / 만약에 스크립트 안의 파일이 매우 크고 인터넷이 느리다면 사용자가 보기힘들 것이다.
 
+### 💽 body에 script 위치
 
-### 💽  body에 script 위치
 - 사용자가 html 정보를 빨리 본다는 장점은 있지만 웹사이트가 자바스크립트에 의존적이라면 사용자가 fetching과 실행시간을 기다려야 페이지를 정상적으로 볼 수 있다.
 
-### 💽  head에 async
-> `<script asyn  src="main.js"></script>`
+### 💽 head에 async
+
+> `<script asyn src="main.js"></script>`
 
 - asyn는 불리언타입의 속상값이라 선언하는것만으로도 true로 설정되어서 바로 사용가능하다.
 - 병렬로 html parsing과 fetching(다운로드)가 같이 진행이 되다가 다운로드가 완료되면 parsing을 멈추고 js를 실행한다.
-![](https://images.velog.io/images/jungjaedev/post/08919934-7dfe-43f2-9cf0-78dd6ff5e859/Screen%20Shot%202021-05-15%20at%207.20.44%20PM.png)  
- - 장점 : 바디 끝보다 fetching이 같이 진행돼어서 다운로드받는 시간만큼 절약된다.
-    
-  
-  - 단점 : 사용자가 페이지를 보는데 여전히 시간이 걸린다. html이 전부 parsing되기 전에 js가 실행이 되어서 조작하려는 시점에 해당 html 부분이 아직 정의되어있지 않을 수 있다.
-  	* 먼저 다운로드가 된 것부터 실행이됨. 정의된 순서랑 상관없이.
-![](https://images.velog.io/images/jungjaedev/post/071bb111-ffb2-4d8f-a101-37db4f71c45a/Screen%20Shot%202021-05-15%20at%207.21.04%20PM.png)
+  ![](https://images.velog.io/images/jungjaedev/post/08919934-7dfe-43f2-9cf0-78dd6ff5e859/Screen%20Shot%202021-05-15%20at%207.20.44%20PM.png)
+- 장점 : 바디 끝보다 fetching이 같이 진행돼어서 다운로드받는 시간만큼 절약된다.
 
-    
-    
-    
-###  💽  head에 defer 
+- 단점 : 사용자가 페이지를 보는데 여전히 시간이 걸린다. html이 전부 parsing되기 전에 js가 실행이 되어서 조작하려는 시점에 해당 html 부분이 아직 정의되어있지 않을 수 있다. \* 먼저 다운로드가 된 것부터 실행이됨. 정의된 순서랑 상관없이.
+  ![](https://images.velog.io/images/jungjaedev/post/071bb111-ffb2-4d8f-a101-37db4f71c45a/Screen%20Shot%202021-05-15%20at%207.21.04%20PM.png)
+
+### 💽 head에 defer
+
 > `<script defer src="main.js"></script>`
 
 - parsing이 되는동안 js를 다운을 받아놓고,
 - parsing이 끝난 후 js가 실행이 된다.
-![](https://images.velog.io/images/jungjaedev/post/5ce43a1f-9136-4731-850e-a9848f0e0626/Screen%20Shot%202021-05-15%20at%207.21.42%20PM.png)
-![](https://images.velog.io/images/jungjaedev/post/528cd139-9694-4ace-9638-58e405cbf8dd/Screen%20Shot%202021-05-15%20at%207.21.49%20PM.png)
+  ![](https://images.velog.io/images/jungjaedev/post/5ce43a1f-9136-4731-850e-a9848f0e0626/Screen%20Shot%202021-05-15%20at%207.21.42%20PM.png)
+  ![](https://images.velog.io/images/jungjaedev/post/528cd139-9694-4ace-9638-58e405cbf8dd/Screen%20Shot%202021-05-15%20at%207.21.49%20PM.png)
 
+** 🔔 defer옵션을 쓰는 이유 **:
 
-
-
-** 🔔 defer옵션을 쓰는 이유  **:  
 - _html파일이 parsing되는동안 자바스크립트 파일을 동시에 받기 때문. _
 - _html이 parsing이 된 다음에 자바스크립트 파일을 실행하기 때문.(같이 로드되지만 실행은 html이 parsing된 이후에)_
 
-
 > 출처
+>
 > - [Web Dev Simplified]https://www.youtube.com/watch?v=BMuFBYw91UQ
 > - [Scripts: async, defer]https://javascript.info/script-async-defer
 > - [드림코딩]https://www.youtube.com/watch?v=tJieVCgGzhs
@@ -485,21 +477,27 @@ substr()의 Parameters는 위의 두 메서드와 달리 (start, length)입니�
 
 ## 📒 Essential Array Methods
 
-### 💾 join(separator?: string): string; 
+### 💾 join(separator?: string): string;
+
 - #### Adds all the elements of an array separated by the specified separator string.
+
 ```javascript
 //  Q. make a string out of an array
 const fruits = ['mango', 'melon', 'peach'];
 const result = fruits.join();
-const result2 = fruits.join(" ");
+const result2 = fruits.join(' ');
 
 console.log(result); // mango,melon,peach
 console.log(result2); // mango melon peach
 console.log(typeof result); // "string"
 ```
+
 ---
+
 ### 💾 split()
+
 - #### Split a string into substrings using the specified separator and return them as an array.
+
 ```javascript
 // Q. make an array out of a string
 const fruits = 'cherry,melon,peach';
@@ -507,51 +505,61 @@ const result = fruits.split(',');
 
 console.log(result); // ["cherry", "melon", "peach"]
 ```
+
 ---
+
 ### 💾 reverse()
+
 - #### Reverses the elements in an array in place.
+
 ```javascript
 // Q. result should be: [5, 4, 3, 2, 1]
-const arr = [1, 2, 3, 4, 5]
+const arr = [1, 2, 3, 4, 5];
 const result = arr.reverse();
 
 console.log(result); // [5, 4, 3, 2, 1]
-console.log(arr);  // [5, 4, 3, 2, 1]
+console.log(arr); // [5, 4, 3, 2, 1]
 ```
 
 ---
 
 ### 💾 slice()
+
 - #### Returns a copy of a section of an array.
 - #### @param end The end index of the specified portion of the array. This is exclusive of the element at the index 'end'.
 
 ```javascript
-// Q. Returns a section of an array. 
+// Q. Returns a section of an array.
 const array = [1, 2, 3, 4, 5];
 const result = array.slice(0, 2);
 
 console.log(result); // [1, 2]
-console.log(array);  // [1, 2, 3, 4, 5]
+console.log(array); // [1, 2, 3, 4, 5]
 ```
 
 ---
->```javascript
-class Student {
-	constructor(name, age, enrolled, score) {
+
+> ```javascript
+> class Student {
+> ```
+
+    constructor(name, age, enrolled, score) {
     	this.name = name;
       	this.age = age;
       	this.enrolled = enrolled;
       	this.score = score;
     }
+
 }
 const students = [
-	new Student('A', 29, true, 45),
-  	new Student('B', 28, false, 80),
-  	new Student('C', 30, true, 90),
-  	new Student('D', 40, false, 66),
-  	new Student('E', 18, true, 88),
+new Student('A', 29, true, 45),
+new Student('B', 28, false, 80),
+new Student('C', 30, true, 90),
+new Student('D', 40, false, 66),
+new Student('E', 18, true, 88),
 ]
-```
+
+````
 ---
 
 ### 💾 find()
@@ -559,23 +567,30 @@ const students = [
 
 ```javascript
 // Find a student with the score 90
-const result = students.find((student) => 
+const result = students.find((student) =>
 	 student.score === 90);
 
 console.log(result); // Student {name: "C", age: 30, enrolled: true, score: 90}
-```
+````
+
 ---
 
 ### 💾 filter()
+
 - #### Returns the elements of an array that meet the condition specified in a callback function.
+
 ```javascript
-const result = students.filter((student) => student.enrolled);
+const result = students.filter(student => student.enrolled);
 
 console.log(result); // [Student, Student, Student]
 ```
+
 ---
+
 ### 💾 map()
+
 - #### Calls a defined callback function on each element of an array, and returns an array that contains the results.
+
 ```javascirpt
 // make an array containing only the students' score
 const result = students.map((student) => student.score);
@@ -586,16 +601,17 @@ console.log(result); // [45, 80, 90, 66, 88]
 ---
 
 ### 💾 some()
+
 - #### Determines whether the specified callback function returns true for any element of an array.
+
 ```javascript
 // check if there is a student with the score lower than 50
-const result = students.some((student) => student.score < 50)
+const result = students.some(student => student.score < 50);
 
 console.log(result); // true
 
-
 // use every()
-const result2 = !students.every((student) => student.score >= 50)
+const result2 = !students.every(student => student.score >= 50);
 
 console.log(result2); // true
 ```
@@ -603,7 +619,9 @@ console.log(result2); // true
 ---
 
 ### 💾 reduce()
+
 - #### Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+
 ```javascirpt
 // compute students' average score
 const result =  students.reduce((prev, curr) => prev + curr.score, 0)
@@ -611,7 +629,7 @@ const result =  students.reduce((prev, curr) => prev + curr.score, 0)
 console.log(result / students.length); // 73,8
 ```
 
---- 
+---
 
 ### 📀 combine javascript methods together
 
@@ -619,30 +637,103 @@ console.log(result / students.length); // 73,8
 //make a string containing all the scores bigger than 50
 // result should be: '80, 90, 66, 88'
 const result = students
-.map((student) => student.score)
-.filter((score) => score >= 50)
-.join();
+  .map(student => student.score)
+  .filter(score => score >= 50)
+  .join();
 
-console.log(result) // 80,90,66,88
+console.log(result); // 80,90,66,88
 ```
 
 ### 📀 sort()
+
 - #### Sorts an array in place.
 - #### This method mutates the array and returns a reference to the same array.
+
 ```javascript
 // sorted in ascending order
 // result should be: '45, 66, 80, 88 90'
 const result = students
-.map(student => student.score)
-.sort((a, b) => a - b)
-.join();
+  .map(student => student.score)
+  .sort((a, b) => a - b)
+  .join();
 
-console.log(result) // 45,66,80,88,90
+console.log(result); // 45,66,80,88,90
 ```
 
-> 출처 : MDN 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
-> 드림코딩 by 엘리 
-https://www.youtube.com/watch?v=3CUjtKJ7PJg&list=LL&index=1&t=12s
-w3schools
-https://www.w3schools.com/js/js_array_methods.asp
+> 출처 : MDN
+> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+> 드림코딩 by 엘리
+> https://www.youtube.com/watch?v=3CUjtKJ7PJg&list=LL&index=1&t=12s
+> w3schools
+> https://www.w3schools.com/js/js_array_methods.asp
+
+---
+
+```shell
+$ node
+> process.version	*설치된 노드 버전
+'v14.17.2'
+> process.arch		*프로세스 아키텍처 정보
+'x64'
+> process.pid		*현재 프로세스 아이디
+18937
+> process.uptime()	*프로세스가 시작된 후 흐른 시간('초' 단위)
+29.5644865
+> process.execPath	*노드의 경로
+'/Users/one/.nvm/versions/node/v14.17.2/bin/node'
+> process.cwd()		*현재 프로세스가 실행되는 위치
+'/Users/one/Desktop/TIL/nodejs'
+> process.cpuUsage()	*현재 cpu 사용량
+{ user: 860632, system: 121641 }
+```
+
+node 내장 객체
+
+```shell
+$ node
+> global.setTimeout
+[Function: setTimeout] {
+  [Symbol(nodejs.util.promisify.custom)]: [Getter]
+}
+> setTimeout		*'global' 생략가능
+[Function: setTimeout] {
+  [Symbol(nodejs.util.promisify.custom)]: [Getter]
+}
+```
+
+```shell
+> console.time('hi')
+undefined
+> console.timeEnd('hi')	  *time ~ timeEnd 실행시간
+hi: 2.624s
+undefined
+
+// console.error - 에러 로깅
+// console.dir - 객체 로깅
+// console.trace - 호출스택 로깅
+// console.table - 보기 편하게 테이블형식으로 보여줌
+```
+
+```shell
+setTimeout(() => console.log('hi'), 2000)
+=> 2초 뒤에 'hi'
+const hello = setInterval(() => console.log('hi'), 2000)
+// 2초마다 'hi'가 찍힘
+clearInterval(hello) => 변수명을 통해 인터벌 취소
+setImmidate => setTimeout 0초와 비슷(같지않음) . 즉시 실행
+```
+
+`__filename, __dirname`
+
+```js
+// filename.js 의 내용
+console.log(__filename);
+console.log(__dirname);
+```
+
+```shell
+// 실행 시
+❯ node filename.js
+/Users/one/Desktop/TIL/nodejs/lecture/filename.js *파일경로
+/Users/one/Desktop/TIL/nodejs/lecture *폴더경로
+```
