@@ -4,10 +4,15 @@ const app = express();
 
 app.set('port', process.env.PORT || 3000);
 
-app.use((req, res, next) => {
-  console.log('모든 요청에 실행');
-  next();
-});
+app.use(
+  (req, res, next) => {
+    console.log('모든 요청에 실행');
+    next();
+  },
+  (req, res, next) => {
+    throw new Error(`It's a err`);
+  }
+);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
@@ -31,6 +36,11 @@ app.get('/about', (req, res) => {
 
 app.get('*', (req, res) => {
   res.send(`hello everybody`);
+});
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.send('you should fix it!');
 });
 
 app.listen(app.get('port'), () => {
