@@ -1,20 +1,25 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const morgan = require('morgan');
+const cookieparser = require('cookie-parser');
 
 app.set('port', process.env.PORT || 3000);
 
-app.use(
-  (req, res, next) => {
-    console.log('모든 요청에 실행');
-    next();
-  },
-  (req, res, next) => {
-    throw new Error(`It's a err`);
-  }
-);
+app.use(morgan('dev'));
+app.use(cookieparser());
 
-app.get('/', (req, res) => {
+app.use((req, res, next) => {
+  console.log('모든 요청에 실행');
+  next();
+});
+
+app.get('/', (req, res, next) => {
+  res.cookie('name', encodeURIComponent(name), {
+    expires: new Date(),
+    httpOnly: true,
+    path: '/',
+  });
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
