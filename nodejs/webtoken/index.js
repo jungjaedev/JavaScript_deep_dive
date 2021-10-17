@@ -18,11 +18,29 @@ app.post('/api/login', (req, res) => {
   });
 });
 
-app.get('/api/protected', (req, res) => {
+app.get('/api/protected', ensureToken, (req, res) => {
+  jwt.verify(req.token, 'my_secret_key', (err, data) =>{
+    if(err) {
+      res.
+    }
+  })
   res.json({
     text: 'this is protected',
+    data: data
   });
 });
+
+function ensureToken(req, res, next) {
+  const bearerHeader = req.headers['authorization'];
+  if (typeof bearerHeader !== 'undefined') {
+    const bearer = bearerHeader.split(' ');
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+    next();
+  } else {
+    res.sendStatus(403);
+  }
+}
 
 app.listen(3000, function () {
   console.log('App listening on port 3000!');
