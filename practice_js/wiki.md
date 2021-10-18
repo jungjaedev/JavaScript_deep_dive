@@ -737,3 +737,29 @@ console.log(__dirname);
 /Users/one/Desktop/TIL/nodejs/lecture/filename.js *파일경로
 /Users/one/Desktop/TIL/nodejs/lecture *폴더경로
 ```
+
+---
+
+Npm i express => package.json에서 “dependencies”로 감 => 배포, 실제 서비스 할때까지 쭈욱 쓰이는 것
+Npm i -D nodemon => “ “devDependencies”로 감 => 개발할떄만 쓰이는 것
+Npm i -g rimraf => “-g”는 global => 전역설치 -> dependencies에 표시 안됨 => 단점 -> 디펜던시에 표시가 안되어서 다른사람이 확인 불가
+==> 그래서 npm i rimraf -D 로 설치 후 => npx rimraf node_modules 이런식으로 사용가능 => 디펜던시에도 표시되고 npx로 명령어처럼 사용가능 (npx -> node pakage excute?)
+
+패키지 버전 3자리 => SemVer 방식
+Major.Minor.Patch로 이루어져있음
+노드에서는 배포를 할 때 항상 버전을 올려야함
+major: 하위 호환이 되지 않는 변경 사항
+minor: 하위 호환이 되는 변경 사항
+Patch: 간단한 버그 수정
+
+버전 앞에 “^”이 있는 경우 : 뒤에껀 신경안씀 -> 뒤에 자리바뀌어도 영향을 미치지 않음 -> 중요
+“~” : 두번째자리 고정
+아무것도 없으면 세번째 자리까지 고정
+Npm i express@latest -> 최신버전 설치 원할 시 “@latest” 붙이면 됨 or
+Npm i express@3.1.14 => 이런 식으로 정확한 버전을 지정해서 설치 가능 or
+Npm i express@next -> 아직 출시간 안된 버전을 설치해서 테스트해 볼 수 있음
+
+npm명령어들
+Npm outdated: 어떤 패키지에 기능 변화가 생겼는지 알 수 있음
+Npm deprecate [패키지명][버전] [메시지]: 패키지를 설치할 때 경고 메시지를 띄우게 함(오류가 있는 패키지에 적용)
+Npm ls 내 프로젝트가 어떤 패키지를 사용하고 있는지 확인
