@@ -781,20 +781,43 @@ SSL / TLS
 
 ---
 
-Utf-8			utf-16 
-1byte(=8bits)		2byte
+Utf-8 utf-16
+1byte(=8bits) 2byte
 Utf-8 3byte와 utf-16의 2byte가 호환
 
-벡터						비트맵
-시작점과 끝점이라는 데이터들의 조함	픽셀단위,
+벡터 비트맵
+시작점과 끝점이라는 데이터들의 조함 픽셀단위,
 벡터는 연산이 들어가기때문에 평균적으로 무거운 파일임
 비트맵은 확대시 품질저하(엘리어싱)이 일어남. 벡터는 X
 
 캐시 - 데이터나 값을 미리 복사해 놓은 ‘임시 데이터’
 ;
 —
-맨처음 server side => 
+맨처음 server side =>
 npm init => npm i —save express
 Index.js파일 만듬 -> app.get하나 + 포트(process.env.PORT)
-package.json에 engines 추가 -> npm start 추가 
+package.json에 engines 추가 -> npm start 추가
 .gitignore 추가
+
+---
+
+server set-up
+맨처음 server side =>
+
+npm init => npm i —save express
+
+Index.js파일 만듬 -> app.get하나 + 포트(process.env.PORT)
+
+package.json에 engines 추가 -> npm start 추가
+
+.gitignore 추가
+
+heroku login
+
+heroku create ⇒ .git 주소 복붙
+
+git remote add heroku <주소>
+
+git push heroku master
+
+heroku open
