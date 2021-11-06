@@ -801,7 +801,10 @@ package.json에 engines 추가 -> npm start 추가
 
 ---
 
-server set-up
+```html
+
+```
+
 맨처음 server side =>
 
 npm init => npm i —save express
@@ -821,3 +824,13 @@ git remote add heroku <주소>
 git push heroku master
 
 heroku open
+
+npm install --save passport passport-google-oauth20
+
+index.js → passport.use로 수정
+
+[https://console.cloud.google.com/](https://console.cloud.google.com/) → 새 프로젝트 생성
+
+클라아디, 클라시크릿 → keys.js에 작성
+
+리팩토링 → 폴더분리 routes, services
