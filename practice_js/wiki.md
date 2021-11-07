@@ -834,3 +834,17 @@ index.js → passport.use로 수정
 클라아디, 클라시크릿 → keys.js에 작성
 
 리팩토링 → 폴더분리 routes, services
+
+
+---
+SOP
+
+- protocol
+- domain
+- port
+
+Promise vs Async, await
+
+- promise는 코드 실행 중에 만나더라도 무시하고 다음 코드를 실행합니다.
+- async-await은 await을 만났을 때 해당 코드가 끝날 때까지(요청이 마무리 될때까지, pending이 아닐 때까지) 기다렸다가 코드를 실행하죠
+- Promise.all(), Promise.race()
