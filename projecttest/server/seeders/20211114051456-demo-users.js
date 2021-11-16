@@ -48,7 +48,7 @@ module.exports = {
         password: 'abc123456',
       },
       {
-        id: 6,
+        id: 6, 
         username: '장원진',
         nickname: 'jangwj2931',
         email: 'jang@gmail.com',
