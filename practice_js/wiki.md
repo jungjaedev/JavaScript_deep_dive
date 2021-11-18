@@ -835,8 +835,8 @@ index.js → passport.use로 수정
 
 리팩토링 → 폴더분리 routes, services
 
-
 ---
+
 SOP
 
 - protocol
@@ -848,3 +848,23 @@ Promise vs Async, await
 - promise는 코드 실행 중에 만나더라도 무시하고 다음 코드를 실행합니다.
 - async-await은 await을 만났을 때 해당 코드가 끝날 때까지(요청이 마무리 될때까지, pending이 아닐 때까지) 기다렸다가 코드를 실행하죠
 - Promise.all(), Promise.race()
+
+---
+
+→ 팀장정하기
+
+→ 백, 프론트 포지션 정하기
+
+→ 팀명 , 부팀장 정함
+
+→ 규칙정하기 : 학습시간 정규시간 + 22~24시, 지각시 기프티콘 1개씩, 12시 이후 github 건들지 않기
+
+→ to-do-list → bare minimum 설정
+
+→ 프론트엔드 세부 기획 - 페이지 나누기, 와이어 프레임
+
+→ 백엔드 세부 기획 - 스키마작성 , api문서 , 아키텍처 다이어그램
+
+→ wiki 작성
+
+⇒ 기본세팅 express , dotenv, cors, ⇒ RDS mysql ⇒ db테이블 구축(Table생성) ⇒ express와 연동
