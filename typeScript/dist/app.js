@@ -1,25 +1,8 @@
 "use strict";
-class Department {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-        this.employees = [];
-    }
-    describe() {
-        console.log(`Department (${this.id}): ${this.name}`);
-    }
-    addEmployee(employee) {
-        this.employees.push(employee);
-    }
-    printEmployeeInformation() {
-        console.log(this.employees.length);
-        console.log(this.employees);
+class ProjectInput {
+    constructor() {
+        this.templateElement = document.getElementById('project-input');
+        this.hostElement = document.getElementById('app');
     }
 }
-const accounting = new Department('d1', 'Accounting');
-accounting.addEmployee('Max');
-accounting.addEmployee('Manu');
-accounting.describe();
-accounting.name = 'New Name';
-accounting.printEmployeeInformation();
 //# sourceMappingURL=app.js.map

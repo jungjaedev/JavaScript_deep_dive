@@ -1,40 +1,15 @@
-class Department {
-  
-  // private name: string;
-  private employees:string[] = [];
+class ProjectInput {
+  templateElement: HTMLTemplateElement;
+  hostElement: HTMLDivElement;
 
-  constructor(private id: string, public name: string) {
-    // this.name = n;
+  constructor () {
+    this.templateElement = document.getElementById('project-input')! as HTMLTemplateElement;
+    this.hostElement = document.getElementById('app')! as HTMLDivElement;
+
+    const importedNode = document.importNode(this.templateElement.content, true);
   }
 
-  describe(this: Department) {
-    console.log(`Department (${this.id}): ${this.name}`);
-  }
-
-  addEmployee(employee: string) {
-    this.employees.push(employee)
-  }
-
-  printEmployeeInformation() {
-    console.log(this.employees.length);
-    console.log(this.employees);
+  private attach() {
+    this.hostElement
   }
 }
-
-
-const accounting = new Department('d1', 'Accounting');
-
-accounting.addEmployee('Max');
-accounting.addEmployee('Manu');
-
-// accounting.employees[2] = 'Anna';
-
-accounting.describe();
-accounting.name = 'New Name'
-accounting.printEmployeeInformation();
-
-
-// const accountingCopy = {name: 's', describe: accounting.describe};
-
-// accountingCopy.describe();
-
