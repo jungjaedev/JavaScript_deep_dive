@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/NomadWeather" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/WorkHardTravelHardApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/react-native/expoTest" vcs="Git" />
+  </component>
+</project>
