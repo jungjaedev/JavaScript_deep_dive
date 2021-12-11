@@ -818,3 +818,141 @@ export default function CalenderContainer({ navigation }) {
 																																																																																																																																																																																																																		  align-items: center;
 																																																																																																																																																																																																																		  `;
 
+
+import React, { useState, useEffect } from 'react';
+import { View, ScrollView, Text, Button, StyleSheet, DynamicColorIOS, TouchableOpacity, ImageBackground } from 'react-native';
+import styled from 'styled-components/native';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { Feather } from '@expo/vector-icons';
+
+function ListOfMyPositiveBeans({ navigation, route }) {
+  const stateStore = useSelector(state => state.user);
+    const { user, accessToken } = stateStore;
+	  const [list, setList] = useState([]);
+
+	    // Todo: 카드 누르면 상세보기 페이지로 이동
+		  const showDetail = () => {
+		      console.log('DETAIL!!');
+			    };
+
+				  const goBack = () => {
+				      console.log('BACK!!!');
+					      navigation.goBack();
+						    };
+
+							  return (
+							      <View style={styles.container}>
+								        <ImageBackgrounds source={require('../../img/background.jpeg')} resizemode="cover">
+										        <TouchableOpacity
+												          activeOpacity={0.8}
+														            style={{ position: 'absolute', marginTop: 15, marginLeft: 10, width: 35, height: 35 }}
+																	          onPress={goBack}
+																			          >
+																					            <Text>
+																								            <Feather name="arrow-left-circle" size={35} color="black" />
+																											          </Text>
+																													          </TouchableOpacity>
+																															          <Header style={{ borderBottomWidth: 3, borderBottomColor: '#a9caf5', borderRadius: 20 }}>
+																																	            <View style={{ width: 200, marginTop: 25 }}>
+																																				            {route.params.data[0].gourdKinds === true ? <Roomname>긍정이방</Roomname> : <Roomname>부정이방</Roomname>}
+																																							          </View>
+																																									            <View style={{ width: 130, marginTop: 35 }}>
+																																												            <Date>{route.params.data[0].createdAt.toString().split('T')[0]}</Date>
+																																															          </View>
+																																																	          </Header>
+																																																			          <ScrollView>
+																																																					            {route.params.data.map((bean, idx) => {
+																																																								            return (
+																																																											              <Card onPress={showDetail}>
+																																																														                  <Beans source={require('../../img/blueBean.png')} />
+																																																																		                  <View style={{ width: 100, marginHorizontal: 20 }}>
+																																																																						                    <Emotion>{bean.emotions}</Emotion>
+																																																																											                  <Level>LEVEL : {bean.emotion_level}</Level>
+																																																																															                  </View>
+																																																																																			                  <View style={{ justifyContent: 'center', paddingLeft: 90, paddingTop: 20 }}>
+																																																																																							                    <Time>{bean.createdAt.toString().split('T')[1].split('.')[0]}</Time>
+																																																																																												                </View>
+																																																																																																              </Card>
+																																																																																																			              );
+																																																																																																						            })}
+																																																																																																									        </ScrollView>
+																																																																																																											      </ImageBackgrounds>
+																																																																																																												      </View>
+																																																																																																													    );
+																																																																																																														}
+
+																																																																																																														const styles = StyleSheet.create({
+																																																																																																														  container: {
+																																																																																																														      flex: 1,
+																																																																																																															      flexDirection: 'row',
+																																																																																																																      justifyContent: 'center',
+																																																																																																																	      alignItems: 'center',
+																																																																																																																		      backgroundColor: '#DBF4F4',
+																																																																																																																			      marginTop: 20,
+																																																																																																																				    },
+																																																																																																																					});
+
+																																																																																																																					const Emotion = styled.Text`
+																																																																																																																					  color: #033f8c;
+																																																																																																																					    font-weight: bold;
+																																																																																																																						  font-size: 15px;
+																																																																																																																						  `;
+
+																																																																																																																						  const Level = styled.Text`
+																																																																																																																						    color: black;
+																																																																																																																							  font-size: 13px;
+																																																																																																																							  `;
+
+																																																																																																																							  const Time = styled.Text`
+																																																																																																																							    color: black;
+																																																																																																																								  font-size: 13px;
+																																																																																																																								  `;
+
+																																																																																																																								  const Card = styled.TouchableOpacity`
+																																																																																																																								    flex-direction: row;
+																																																																																																																									  /* border: 1px solid black; */
+																																																																																																																									    background-color: white;
+																																																																																																																										  margin: 10px 25px 10px 25px;
+																																																																																																																										    border-radius: 13px;
+																																																																																																																											  padding: 5px;
+																																																																																																																											  `;
+
+																																																																																																																											  const Roomname = styled.Text`
+																																																																																																																											    font-size: 30px;
+																																																																																																																												  font-weight: bold;
+																																																																																																																												  `;
+
+																																																																																																																												  const Date = styled.Text`
+																																																																																																																												    margin-left: 15px;
+																																																																																																																													  font-size: 20px;
+																																																																																																																													    font-weight: bold;
+																																																																																																																														`;
+
+																																																																																																																														const Header = styled.View`
+																																																																																																																														  flex-direction: row;
+																																																																																																																														    justify-content: space-around;
+																																																																																																																															  margin-top: 30px;
+																																																																																																																															    margin-bottom: 5px;
+																																																																																																																																  height: 90px;
+																																																																																																																																    /* border: 1px solid black; */
+																																																																																																																																	`;
+
+																																																																																																																																	const Beans = styled.ImageBackground`
+																																																																																																																																	  /* flex: 1; */
+																																																																																																																																	    height: 30px;
+																																																																																																																																		  width: 30px;
+																																																																																																																																		    top: 5px;
+																																																																																																																																			  margin-left: 5px;
+																																																																																																																																			    opacity: 0.9;
+																																																																																																																																				`;
+
+																																																																																																																																				const ImageBackgrounds = styled.ImageBackground`
+																																																																																																																																				  flex: 1;
+																																																																																																																																				    height: 100%;
+																																																																																																																																					  width: 100%;
+																																																																																																																																					    opacity: 1;
+																																																																																																																																						`;
+
+																																																																																																																																						export default ListOfMyPositiveBeans;
+
