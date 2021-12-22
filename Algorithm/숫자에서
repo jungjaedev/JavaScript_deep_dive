@@ -1,0 +1,21 @@
+function solution(s) {
+    let answer = "";
+    let tmp = "";
+    let arr = ['zero','one','two','three','four','five','six','seven','eight','nine'];
+    
+    for(let i = 0; i < s.length; i++) {
+        if(isNaN(s[i]) === false) { //숫자
+            answer += s[i];
+        } else {    //문자
+            tmp += s[i];  //tmp에 문자열 누적
+            for(let j = 0; j < arr.length; j++){
+                if(tmp === arr[j]) { // 대응하는 영단어가 있을경우
+                    answer += j;
+                    tmp = '';
+                }
+            }
+        }
+    }
+    return parseInt(answer);
+}
+// 시간복잡도 : O(n) ?
