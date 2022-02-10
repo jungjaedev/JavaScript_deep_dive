@@ -1,7 +1,16 @@
-function solution(arr) {
-
+function solution(a, b, c) {
+	let answer;
+	if(a < b) {
+		answer = a;
+	} else {
+		answer = b;
+	}
+	if (answer > c) {
+		answer = c;
+	}
+	return answer;
 }
 
 
-let nums = [6, 5, 11];
-console.log(solution(nums));
+
+console.log(solution(2, 5, 1));
