@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cordinates</title>
+    <style>
+      body {
+        background-color: black;
+        /* overflow: hidden; */
+      }
+
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        border: 1px solid white;
+        margin-bottom: 4px;
+        border-radius: 5px;
+      }
+
+      .special {
+        background-color: lightsalmon;
+      }
+
+      aside {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="special"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <aside>
+      <button class="by">Scroll by 100px(y)</button>
+      <button class="to">Scroll to 100px(y)</button>
+      <button class="ainto">Scroll into special</button>
+    </aside>
+    <script>
+      const special = document.querySelector('.special');
+      special.addEventListener('click', event => {
+        const rect = special.getBoundingClientRect();
+        console.log('rect :', rect);
+        console.log(`client : ${event.clientX}, ${event.clientY}`);
+        console.log(`page : ${event.pageX}, ${event.pageY}`);
+      });
+      const scrollBy = document.querySelector('.by');
+      const scrollTo = document.querySelector('.to');
+      const scrollInto = document.querySelector('.ainto');
+      scrollBy.addEventListener('click', () => {
+        window.scrollBy(0, 100);
+      });
+      scrollTo.addEventListener('click', () => {
+        window.scrollTo(0, 100);
+      });
+      scrollInto.addEventListener('click', () => {
+        special.scrollIntoView();
+      });
+    </script>
+  </body>
+</html>
