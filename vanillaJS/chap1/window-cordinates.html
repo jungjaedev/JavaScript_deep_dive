@@ -46,7 +46,7 @@
     <aside>
       <button class="by">Scroll by 100px(y)</button>
       <button class="to">Scroll to 100px(y)</button>
-      <button class="ainto">Scroll into special</button>
+      <button class="into">Scroll into special</button>
     </aside>
     <script>
       const special = document.querySelector('.special');
@@ -56,16 +56,16 @@
         console.log(`client : ${event.clientX}, ${event.clientY}`);
         console.log(`page : ${event.pageX}, ${event.pageY}`);
       });
-      const scrollBy = document.querySelector('.by');
-      const scrollTo = document.querySelector('.to');
-      const scrollInto = document.querySelector('.ainto');
-      scrollBy.addEventListener('click', () => {
-        window.scrollBy(0, 100);
+      const by = document.querySelector('.by');
+      const to = document.querySelector('.to');
+      const into = document.querySelector('.into');
+      by.addEventListener('click', () => {
+        window.scrollBy({ top: 100, left: 0, behavior: 'smooth' });
       });
-      scrollTo.addEventListener('click', () => {
+      to.addEventListener('click', () => {
         window.scrollTo(0, 100);
       });
-      scrollInto.addEventListener('click', () => {
+      into.addEventListener('click', () => {
         special.scrollIntoView();
       });
     </script>

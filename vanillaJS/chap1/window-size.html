@@ -8,7 +8,7 @@
     <style>
       .tag {
         display: inline-block;
-        background-color: thistle;
+        background-color: lightsalmon;
         padding: 16px;
         margin: 16px;
         font-size: 48px;
@@ -24,7 +24,7 @@
         window.screen : ${window.screen.width} ${window.screen.height} <br />
         window.outer : ${window.outerWidth} ${window.outerHeight} <br />
         window.inner : ${window.innerWidth} ${window.innerHeight} <br />
-        documentElement.clientWidth : ${document.documentElement.clientWidth} ${document.documentElement.clientHeight}
+        document.documentElement.client : ${document.documentElement.clientWidth} ${document.documentElement.clientHeight}
         `;
       }
       window.addEventListener('resize', () => {
@@ -34,3 +34,37 @@
     </script>
   </body>
 </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window size</title>
+    <style>
+      .box {
+        background-color: lightsalmon;
+        width: 300px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      const box = document.querySelector('.box');
+      function updateSize() {
+        box.innerHTML = `
+        window.screen : ${window.screen.width}, ${window.screen.height} <br />
+        window.inner : ${window.innerWidth}, ${window.innerHeight} <br />
+        window.outer : ${window.outerWidth}, ${window.outerHeight} <br />
+        document.documentElement : ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}
+        `;
+      }
+      window.addEventListener('resize', () => {
+        updateSize();
+      });
+    </script>
+  </body>
+</html> -->
