@@ -19,9 +19,11 @@ export function playAlert() {
 export function playWin() {
   playSound(winSound);
 }
+
 export function playBackground() {
   playSound(bgSound);
 }
+
 export function stopBackground() {
   stopSound(bgSound);
 }
