@@ -15,7 +15,7 @@ function App() {
       <div className="black-nav">
         <h4>ReactBlog</h4>
       </div>
-      <div className="list">
+      {/* <div className="list">
         <h4
           onClick={() => {
             setModal(!modal);
@@ -40,8 +40,30 @@ function App() {
       <div className="list">
         <h4>{글제목[2]}</h4>
         <p>5월 24일 발행</p>
-      </div>
-      {modal ? <Modal></Modal> : null}
+      </div> */}
+      {글제목.map((el, idx) => {
+        return (
+          <div key="idx" className="list">
+            <h4
+              onClick={() => {
+                setModal(!modal);
+              }}
+            >
+              {글제목[idx]}
+              <span
+                onClick={() => {
+                  set따봉(따봉++);
+                }}
+              >
+                👍
+              </span>
+              {따봉}
+            </h4>
+            <p>5월 24일 발행</p>
+          </div>
+        );
+      })}
+      {/* {modal ? <Modal></Modal> : null} */}
     </div>
   );
 }
