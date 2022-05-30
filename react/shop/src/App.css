@@ -2,12 +2,6 @@
   text-align: center;
 }
 
-.background {
-  background-image: url('./backgroundimg.jpeg');
-  background-size: cover;
-  color: white;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
