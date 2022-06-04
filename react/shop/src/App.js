@@ -4,6 +4,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import bg from './img/bg.png';
 import data from './data';
 import { Routes, Route, Link } from 'react-router-dom';
+import Detail from './Detail';
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -39,7 +40,7 @@ function App() {
             </>
           }
         />
-        <Route path="/detail" element={<div>상세페이지</div>} />
+        <Route path="/detail" element={<Detail />} />
       </Routes>
     </div>
   );
