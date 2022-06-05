@@ -3,20 +3,33 @@ import './App.css';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import bg from './img/bg.png';
 import data from './data';
-import { Routes, Route, Link } from 'react-router-dom';
-import Detail from './Detail';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import Detail from './routes/Detail';
 
 function App() {
   let [shoes, setShoes] = useState(data);
+  let navigate = useNavigate();
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate('/');
+              }}
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate('/detail');
+              }}
+            >
+              Features
+            </Nav.Link>
 
             <Link to="/">홈</Link>
             <Link to="/detail">상세페이지</Link>
@@ -41,7 +54,20 @@ function App() {
           }
         />
         <Route path="/detail" element={<Detail />} />
+        <Route path="/about" element={<About />}>
+          <Route path="member" element={<div>멤버</div>} />
+          <Route path="location" element={<Detail />} />
+        </Route>
       </Routes>
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <div>
+      <h4>회사정보</h4>
+      <Outlet></Outlet>
     </div>
   );
 }
