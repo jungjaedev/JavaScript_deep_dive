@@ -3,23 +3,18 @@ import { useEffect, useState } from 'react';
 
 function Detail(props) {
   let { id } = useParams();
+  let [count, setCount] = useState(0);
+  let [alert, setAlert] = useState(true);
 
   useEffect(() => {
-    console.log('hi');
-  });
-
-  let [count, setCount] = useState(0);
+    setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+  }, []);
 
   return (
     <div className="container">
-      {count}
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        버튼
-      </button>
+      {alert === true ? <div className="alert alert-warning">2초이내 구매시 할인</div> : null}
       <div className="row">
         <div className="col-md-6">
           <img alt="" src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
