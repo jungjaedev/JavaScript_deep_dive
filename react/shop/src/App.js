@@ -5,9 +5,10 @@ import bg from './img/bg.png';
 import data from './data';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import Detail from './routes/Detail';
+import axios from 'axios';
 
 function App() {
-  let [shoes, setShoes] = useState(data);
+  let [shoes] = useState(data);
   let navigate = useNavigate();
 
   return (
@@ -50,6 +51,18 @@ function App() {
                   })}
                 </div>
               </div>
+              <button
+                onClick={() => {
+                  axios
+                    .get('https://codingapple1.github.io/shop/data2.json')
+                    .then(data => {
+                      console.log(data);
+                    })
+                    .catch(() => console.log('err'));
+                }}
+              >
+                버튼
+              </button>
             </>
           }
         />
@@ -63,14 +76,14 @@ function App() {
   );
 }
 
-function About() {
-  return (
-    <div>
-      <h4>회사정보</h4>
-      <Outlet></Outlet>
-    </div>
-  );
-}
+// function About() {
+//   return (
+//     <div>
+//       <h4>회사정보</h4>
+//       <Outlet></Outlet>
+//     </div>
+//   );
+// }
 
 function Card(props) {
   return (
