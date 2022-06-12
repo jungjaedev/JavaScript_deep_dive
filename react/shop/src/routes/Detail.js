@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Nav } from 'react-bootstrap';
 
 function Detail(props) {
   let { id } = useParams();
@@ -26,6 +27,20 @@ function Detail(props) {
           <button className="btn btn-danger">주문하기</button>
         </div>
       </div>
+      <Nav variant="tabs" defaultActiveKey="link0">
+        <Nav.Item>
+          <Nav.Link eventKey="link0">Active</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link1">Link</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link2">Link</Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <div>내용1</div>
+      <div>내용2</div>
+      <div>내용3</div>
     </div>
   );
 }
