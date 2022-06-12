@@ -5,6 +5,7 @@ import { Nav } from 'react-bootstrap';
 function Detail(props) {
   let { id } = useParams();
   let [count, setCount] = useState(0);
+  let [tab, setTab] = useState(0);
   let [alert, setAlert] = useState(true);
 
   useEffect(() => {
@@ -29,20 +30,50 @@ function Detail(props) {
       </div>
       <Nav variant="tabs" defaultActiveKey="link0">
         <Nav.Item>
-          <Nav.Link eventKey="link0">Active</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              setTab(0);
+            }}
+            eventKey="link0"
+          >
+            Link
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link1">Link</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              setTab(1);
+            }}
+            eventKey="link1"
+          >
+            Link
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link2">Link</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              setTab(2);
+            }}
+            eventKey="link2"
+          >
+            Link
+          </Nav.Link>
         </Nav.Item>
       </Nav>
-      <div>내용1</div>
-      <div>내용2</div>
-      <div>내용3</div>
+      <TabContent tab={tab} />
     </div>
   );
+}
+
+function TabContent({ tab }) {
+  // if (tab === 0) {
+  //   return <div>내용0</div>;
+  // } else if (tab === 1) {
+  //   return <div>내용1</div>;
+  // } else if (tab === 2) {
+  //   return <div>내용2</div>;
+  // }
+  return [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab];
 }
 
 export default Detail;
