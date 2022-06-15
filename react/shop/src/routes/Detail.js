@@ -1,12 +1,16 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Nav } from 'react-bootstrap';
+
+import { Context1 } from './../App';
 
 function Detail(props) {
   let { id } = useParams();
   let [count, setCount] = useState(0);
   let [tab, setTab] = useState(0);
   let [alert, setAlert] = useState(true);
+
+  let { items } = useContext(Context1);
 
   useEffect(() => {
     setTimeout(() => {
@@ -16,6 +20,7 @@ function Detail(props) {
 
   return (
     <div className="container">
+      {items}
       {alert === true ? <div className="alert alert-warning">2초이내 구매시 할인</div> : null}
       <div className="row">
         <div className="col-md-6">
@@ -60,7 +65,7 @@ function Detail(props) {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <TabContent tab={tab} />
+      <TabContent tab={tab} shoes={props.shoes} />
     </div>
   );
 }
