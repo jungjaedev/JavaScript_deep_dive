@@ -6,6 +6,7 @@ import data from './data';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import Detail from './routes/Detail';
 import axios from 'axios';
+import Cart from './routes/Cart';
 
 export let Context1 = createContext();
 
@@ -78,6 +79,7 @@ function App() {
             </Context1.Provider>
           }
         />
+        <Route path="/cart" element={<Cart />} />
         {/* <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버</div>} />
           <Route path="location" element={<div>위치정보</div>} />
