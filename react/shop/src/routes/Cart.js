@@ -2,9 +2,9 @@ import { Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 function Cart() {
-  let a = useSelector(state => {
-    return state;
-  });
+  let a = useSelector(state => state.user);
+
+  console.log(a);
 
   return (
     <div>
