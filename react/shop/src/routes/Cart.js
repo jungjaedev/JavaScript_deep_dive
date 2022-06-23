@@ -1,7 +1,7 @@
 import { Table } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { changeName } from './../store';
+import { changeName, increase } from './../store/userSlice';
 
 function Cart() {
   let state = useSelector(state => state);
@@ -9,7 +9,16 @@ function Cart() {
 
   return (
     <div>
-      {state.user}
+      <h6>
+        {state.user.name} {state.user.age}
+      </h6>
+      <button
+        onClick={() => {
+          dispatch(increase(100));
+        }}
+      >
+        Btn
+      </button>
       <Table>
         <thead>
           <tr>
