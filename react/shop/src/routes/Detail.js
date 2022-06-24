@@ -1,12 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import { Nav } from 'react-bootstrap';
+import { addItem } from './../store';
+import { useDispatch } from 'react-redux';
 
 import { Context1 } from './../App';
 
 function Detail(props) {
   let { id } = useParams();
-  let [count, setCount] = useState(0);
+  let dispatch = useDispatch();
   let [tab, setTab] = useState(0);
   let [alert, setAlert] = useState(true);
 
@@ -29,7 +31,14 @@ function Detail(props) {
           <h4 className="pt-5">{props.shoes[id].title}</h4>
           <p>{props.shoes[id].content}</p>
           <p>{props.shoes[id].price}</p>
-          <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              dispatch(addItem({ id: 1, name: 'Red Knit', count: 1 }));
+            }}
+          >
+            주문하기
+          </button>
         </div>
       </div>
       <Nav variant="tabs" defaultActiveKey="link0">

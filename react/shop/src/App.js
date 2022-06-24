@@ -23,17 +23,17 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link
               onClick={() => {
-                navigate('/');
+                navigate('/cart');
               }}
             >
-              Home
+              Cart
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate('/detail');
+                navigate('/detail/0');
               }}
             >
-              Features
+              Detail/0
             </Nav.Link>
 
             <Link to="/">홈</Link>
