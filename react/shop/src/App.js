@@ -15,6 +15,11 @@ function App() {
   let [items] = useState([10, 11, 12]);
   let navigate = useNavigate();
 
+  // let obj = { name: 'kim' };
+
+  // localStorage.setItem('data', JSON.stringify(obj));
+  // console.log(JSON.parse(localStorage.getItem('data')));
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
