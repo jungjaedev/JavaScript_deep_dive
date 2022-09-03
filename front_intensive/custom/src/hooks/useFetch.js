@@ -21,3 +21,23 @@ const useFetch = <T>(
 };
 
 export default useFetch;
+
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import { getItemWithExpireTime } from "./local-storage";
+
+const refresh = async (
+  config: AxiosRequestConfig
+): Promise<AxiosRequestConfig> => {
+  const token = getItemWithExpireTime("tokenWithExpire");
+  if (config.headers) config.headers["Authorization"] = `Bearer ${token}`;
+
+  return config;
+};
+
+const customAxios: AxiosInstance = axios.create({
+  baseURL: "https://dev.knewnnew.com/",
+});
+
+customAxios.interceptors.request.use(refresh, () => {});
+
+export default customAxios;
