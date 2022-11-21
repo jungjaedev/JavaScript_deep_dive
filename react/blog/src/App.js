@@ -1,12 +1,16 @@
 /* eslint-disable */
 
-import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
-  let post = '강남 우동 맛집';
-  let [글제목, b] = useState(['남자 코트 추천', '강남 우동 맛집', '파이썬 독학']);
+  let post = "강남 우동 맛집";
+  let [글제목, b] = useState([
+    "남자 코트 추천",
+    "강남 우동 맛집",
+    "파이썬 독학",
+  ]);
   let [따봉, set따봉] = useState(0);
   let [modal, setModal] = useState(false);
 
