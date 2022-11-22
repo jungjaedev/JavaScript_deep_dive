@@ -1,2 +1,2 @@
-[Algorithm & Data Structure](./Algorithm_DataStructure/README.md)
-[Typescript](./typescript/README.md)
+- [Algorithm & Data Structure](./Algorithm_DataStructure/README.md)
+- [Typescript](./typescript/README.md)
