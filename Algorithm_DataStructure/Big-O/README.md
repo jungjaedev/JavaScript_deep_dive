@@ -5,7 +5,7 @@
 1부터 n까지 수의 합을 구하는 방법은 여러가지가 있다.
 
 ```javascript
-function addUpTo(n) {
+function addUpTo1(n) {
   let total = 0;
   for (let i = 1; i <= n; i++) {
     total += i;
@@ -15,7 +15,7 @@ function addUpTo(n) {
 ```
 
 ```javascript
-function addUpTo(n) {
+function addUpTo2(n) {
   return (n * (n + 1)) / 2;
 }
 ```
@@ -61,3 +61,44 @@ Time Elapsed : 0.8940999999642372 seconds.
 직접 실행하지 않고 특정한 값을 통해 표기하기위해 나오게 된 것이 -> `Big-O`
 
 ---
+
+## Big-O 표기법
+
+- 입력된 내용이 늘어날수록 알고리즘에 실행시간이 어떻게 변하는지 설명하는 공식적인 방식
+- **입력의 크기와 실행시간의 관계**
+
+#### Examples
+
+```javascript
+function addUpTo2(n) {
+  return (n * (n + 1)) / 2;
+}
+```
+
+'addUpTo2'함수는 n의 값에 상관없이 O(1)의 시간복잡도를 갖는다.
+
+```javascript
+function addUpTo1(n) {
+  let total = 0;
+  for (let i = 1; i <= n; i++) {
+    total += i;
+  }
+  return total;
+}
+```
+
+'addUpTo1'함수는 O(n)의 시간복잡도를 갖는다.
+
+```javascript
+function printAllPairs(n) {
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      console.log(i, j);
+    }
+  }
+}
+```
+
+'printAllPairs'함수는 O(n²)의 시간복잡도를 갖는다.
+
+#### Big-O 단순화
