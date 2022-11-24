@@ -62,7 +62,7 @@ Time Elapsed : 0.8940999999642372 seconds.
 
 ---
 
-## Big-O 표기법
+### Big-O 표기법
 
 - 입력된 내용이 늘어날수록 알고리즘에 실행시간이 어떻게 변하는지 설명하는 공식적인 방식
 - **입력의 크기와 실행시간의 관계**
@@ -101,4 +101,28 @@ function printAllPairs(n) {
 
 'printAllPairs'함수는 O(n²)의 시간복잡도를 갖는다.
 
-#### Big-O 단순화
+---
+
+### Big-O 단순화
+
+> Constants Don't Matter
+
+```
+O(2n)   -> O(n)
+O(500)  -> O(1)
+O(13n²) -> O(n²)
+```
+
+> Smaller Terms Don't Matter
+
+```
+O(n + 10)      -> O(n)
+O(1000n + 50)  -> O(n)
+O(n² + 5n + 8) -> O(n²)
+```
+
+---
+
+### Space Complexity(공간복잡도)
+
+- 입력이 커질수록 알고리즘이 얼마나 많은 공간을 차지하는가.
