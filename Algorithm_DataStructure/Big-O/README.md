@@ -126,3 +126,37 @@ O(n² + 5n + 8) -> O(n²)
 ### Space Complexity(공간복잡도)
 
 - 입력이 커질수록 알고리즘이 얼마나 많은 공간을 차지하는가.
+- 알고리즘 자체가 필요로하는 공간
+
+- Space Complexity in JS
+  - 원시타입 대부분은 constant space를 갖는다 -> booleans, numbers, undefined, null
+  - Strings은 O(n)의 공간을 차지한다(n은 string의 길이)
+  - 참조타입도 대부분(배열, 객체) O(n)이라고 생각함 (배열의 길이나 객체 키의 갯수)
+
+```javascript
+// 예시 2
+function sum(arr) {
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+
+// total - number
+// i - number
+// 입력의 크기와 상관없이 O(1)의 공간은 가지고 있음
+```
+
+```javascript
+// 예시 2
+function double(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(2 * arr[i]);
+  }
+  return newArr;
+}
+
+// O(n) space
+```
