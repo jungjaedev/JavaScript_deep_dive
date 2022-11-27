@@ -149,7 +149,7 @@ function sum(arr) {
 ```
 
 ```javascript
-// 예시 2
+// 예시 1
 function double(arr) {
   let newArr = [];
   for (let i = 0; i < arr.length; i++) {
