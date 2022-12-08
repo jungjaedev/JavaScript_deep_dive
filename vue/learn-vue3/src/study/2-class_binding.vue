@@ -4,8 +4,7 @@
 </template>
 
 <script>
-import { computed } from "vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 export default {
   setup() {
