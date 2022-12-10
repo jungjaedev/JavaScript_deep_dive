@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <h2>보간법</h2>
     <p>{{ message }}</p>
@@ -35,4 +35,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped></style> -->
