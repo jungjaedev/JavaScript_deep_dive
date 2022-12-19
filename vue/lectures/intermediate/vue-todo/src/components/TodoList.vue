@@ -1,55 +1,45 @@
 <template>
     <div>
-        <ul>
+        <transition-group name="list" tag="ul">
             <li
-                v-for="(todoItem, index) in todoItems"
+                v-for="(todoItem, index) in this.storedTodoItems"
                 v-bind:key="todoItem.item"
                 class="shadow"
             >
                 <i
                     v-bind:class="{ checkBtnCompleted: todoItem.completed }"
                     class="fa-solid fa-check checkBtn"
-                    @click="toggleComplete(todoItem, index)"
+                    @click="toggleComplete({ todoItem, index })"
                 ></i>
                 <span v-bind:class="{ textCompleted: todoItem.completed }">
                     {{ todoItem.item }}
                 </span>
-                <span class="removeBtn" @click="removeTodo(todoItem, index)"
+                <span class="removeBtn" @click="removeTodo({ todoItem, index })"
                     ><i class="fa-sharp fa-solid fa-trash"></i
                 ></span>
             </li>
-        </ul>
+        </transition-group>
     </div>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
-    data() {
-        return {
-            todoItems: [],
-        };
-    },
     methods: {
-        removeTodo: function (todoItem, index) {
-            localStorage.removeItem(todoItem);
-            this.todoItems.splice(index, 1);
-        },
-        toggleComplete: function (todoItem, index) {
-            todoItem.completed = !todoItem.completed;
-            console.log(index);
-            localStorage.removeItem(todoItem.item);
-            localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-        },
+        ...mapMutations({
+            removeTodo: "removeOneItem",
+            toggleComplete: "toggleOneItem",
+        }),
+        // removeTodo(todoItem, index) {
+        //     this.$store.commit("removeOneItem", { todoItem, index });
+        // },
+        // toggleComplete(todoItem, index) {
+        //     this.$store.commit("toggleOneItem", { todoItem, index });
+        // },
     },
-    created: function () {
-        if (localStorage.length) {
-            for (let i = 0; i < localStorage.length; i++) {
-                // if (localStorage.key(i) !== "loglevel:webpack-dev-server")
-                this.todoItems.push(
-                    JSON.parse(localStorage.getItem(localStorage.key(i)))
-                );
-            }
-        }
+    computed: {
+        ...mapGetters(["storedTodoItems"]),
     },
 };
 </script>
@@ -89,5 +79,15 @@ li {
 .removeBtn {
     margin-left: auto;
     color: #de4343;
+}
+
+/* 리스트 아이템 트랜지션 효과 */
+.list-enter-active,
+.list-leave-active {
+    transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(30px);
 }
 </style>
