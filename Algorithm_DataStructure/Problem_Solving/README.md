@@ -14,6 +14,17 @@
 
 ## Explore Concrete Examples
 
+Coming up with examples can help you understand the problem better.
+Examples also provide sanity checks that your eventual solution works how it should.
+
+1. Starty with Simple Examples
+
+2. Progress to More Complex Examples
+
+3. Explore Examples with Empty inputs
+
+4. Explore Examples with Invalid Inputs
+
 ## Break It Down
 
 ## Solve/Simpolify
