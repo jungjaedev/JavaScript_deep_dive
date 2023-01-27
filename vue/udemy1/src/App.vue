@@ -1,25 +1,28 @@
 <template>
   <div>
     <the-header></the-header>
-    <badge-list></badge-list>
-    <user-info
-      :full-name="activeUser.name"
-      :info-text="activeUser.description"
-      :role="activeUser.role"
-    ></user-info>
+    <button @click="setSelectedComponet('active-goals')">Active</button>
+    <button @click="setSelectedComponet('manage-goals')">Manage</button>
+    <!-- <active-goals v-if="seletedComponent === 'active-goals'"></active-goals>
+    <manage-goals v-if="seletedComponent === 'manage-goals'"></manage-goals> -->
+    <keep-alive>
+        <component :is="seletedComponent"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 import TheHeader from './components/TheHeader.vue';
-import BadgeList from './components/BadgeList.vue';
-import UserInfo from './components/UserInfo.vue';
+import ManageGoals from './components/ManageGoals.vue';
+import ActiveGoals from './components/ActiveGoals.vue';
+
 export default {
     components: {
-        TheHeader,BadgeList, UserInfo
+        TheHeader,ManageGoals,ActiveGoals
     },
   data() {
     return {
+        seletedComponent: 'active-goals',
       activeUser: {
         name: 'Maximilian Schwarzmüller',
         description: 'Site owner and admin',
@@ -27,6 +30,11 @@ export default {
       },
     };
   },
+  methods: {
+    setSelectedComponet(cmp) {
+        this.seletedComponent = cmp
+    }
+  }
 };
 </script>
 
